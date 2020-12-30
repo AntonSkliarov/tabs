@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { options } from '../../api/options'
 import { Tabs } from '../Tabs'
+import { CurrentTabValue } from '../CurrentTabValue'
 
 export function App() {
   const [tabsList, setOptions] = useState(options);
@@ -9,7 +10,8 @@ export function App() {
   return (
     <div className="App">
       <h1>Tabs</h1>
-      <Tabs tabsList={tabsList} currentTab={currentTab}/>
+      <Tabs tabsList={tabsList} currentTab={currentTab} />
+      <CurrentTabValue value={currentTab.value}/>
     </div>
   );
 }

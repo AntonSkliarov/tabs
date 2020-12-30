@@ -20,6 +20,6 @@ Tabs.propTypes = {
     PropTypes.shape({
       value: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-    })
-  )
+    }).isRequired,
+  ).isRequired,
 }
