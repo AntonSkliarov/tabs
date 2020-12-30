@@ -4,14 +4,23 @@ import { Tabs } from '../Tabs'
 import { CurrentTabValue } from '../CurrentTabValue'
 
 export function App() {
-  const [tabsList, setOptions] = useState(options);
-  const [currentTab, setCurrentTab] = useState(tabsList[0]);
+  const [tabsList] = useState(options);
+  const [currentTab, setCurrentTab] = useState(options[0]);
+
+  const handleSelectTab = (tab) => {
+    setCurrentTab(tab);
+  }
 
   return (
     <div className="App">
       <h1>Tabs</h1>
-      <Tabs tabsList={tabsList} currentTab={currentTab} />
-      <CurrentTabValue value={currentTab.value}/>
+      <Tabs
+        tabsList={tabsList}
+        currentTab={currentTab}
+        handleSelectTab={handleSelectTab}
+      />
+
+      <CurrentTabValue value={currentTab.value} />
     </div>
   );
 }

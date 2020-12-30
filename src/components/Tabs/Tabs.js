@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TabItem } from '../TabItem'
 
-export function Tabs({ tabsList, currentTab }) {
+export function Tabs({ tabsList, currentTab, handleSelectTab }) {
   return (
     <ul className="tabs__list">
       {tabsList.map(tab => (
@@ -10,6 +10,7 @@ export function Tabs({ tabsList, currentTab }) {
           key={tab.label}
           tab={tab}
           currentTab={currentTab}
+          handleSelectTab={handleSelectTab}
         />
       ))}
     </ul>
@@ -27,4 +28,5 @@ Tabs.propTypes = {
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
   }).isRequired,
+  handleSelectTab: PropTypes.func.isRequired,
 }
