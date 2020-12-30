@@ -1,2 +1,0 @@
-(this.webpackJsonptabs=this.webpackJsonptabs||[]).push([[0],{9:function(e,t,s){"use strict";s.r(t);var n=s(0),c=(s(1),s(3));var r=function(){return Object(n.jsx)("div",{className:"App",children:Object(n.jsx)("h1",{children:"Tabs"})})};s.n(c).a.render(Object(n.jsx)(r,{}),document.getElementById("root"))}},[[9,1,2]]]);
-//# sourceMappingURL=main.ed8204f6.chunk.js.map
