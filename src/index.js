@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Tabs from './components/Tabs/Tabs';
+import { App } from './components/App';
 
 ReactDOM.render(
-  <Tabs />,
+  <App />,
   document.getElementById('root')
 );

@@ -1,11 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Tabs() {
+export function Tabs({ tabsList, currentTab }) {
   return (
-    <div className="App">
-      <h1>Tabs</h1>
-    </div>
-  );
+    <ul className="tabs__list">
+      {tabsList.map(tab => (
+        <li key={tab.label}>
+          <button type="button">
+            {tab.label}
+        </button>
+        </li>
+      ))}
+    </ul>
+  )
 }
 
-export default Tabs;
+Tabs.propTypes = {
+  tabsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  )
+}
