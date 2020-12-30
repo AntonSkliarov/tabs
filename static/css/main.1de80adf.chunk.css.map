@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Button/Button.sass","webpack://src/components/Tabs/Tabs.sass"],"names":[],"mappings":"AAAA,YACE,cAAe,CCDjB,MACE,YAAa,CAEb,oBAAqB","file":"main.1de80adf.chunk.css","sourcesContent":[".tab-button {\n  cursor: pointer; }\n",".tabs {\n  display: flex;\n\n  list-style-type: none; }\n"]}
