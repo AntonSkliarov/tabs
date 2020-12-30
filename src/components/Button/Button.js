@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Button.sass'
 
 export function Button({ tab, handleSelectTab, currentTab}) {
   return (
-    <button type="button" onClick={() => handleSelectTab(tab)}>
+    <button
+      className="tab-button"
+      type="button"
+      onClick={() => handleSelectTab(tab)}
+    >
       {tab.label}
     </button>
   )

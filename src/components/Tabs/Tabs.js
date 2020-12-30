@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TabItem } from '../TabItem'
+import './Tabs.sass'
 
 export function Tabs({ tabsList, currentTab, handleSelectTab }) {
   return (
-    <ul className="tabs__list">
+    <ul className="tabs">
       {tabsList.map(tab => (
         <TabItem
           key={tab.label}

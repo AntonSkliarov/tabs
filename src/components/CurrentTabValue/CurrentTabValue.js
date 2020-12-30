@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 export function CurrentTabValue({ value }) {
   return (
     <div className="current-tab">
-      {value}
+      <p>
+        {value}
+      </p>
     </div>
   )
 }
