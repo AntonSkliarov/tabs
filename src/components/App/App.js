@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { options } from '../../options/options'
-import { Tabs } from '../Tabs'
-import { CurrentTabValue } from '../CurrentTabValue'
+import { options } from '../../options/options';
+import { Tabs } from '../Tabs';
+import { CurrentTabValue } from '../CurrentTabValue';
 import './App.sass';
 
 export function App() {
@@ -9,7 +9,7 @@ export function App() {
 
   const handleSelectTab = (tab) => {
     setCurrentTab(tab);
-  }
+  };
 
   const renderTabValue = () => {
     return (
@@ -18,8 +18,8 @@ export function App() {
           {currentTab.value}
         </p>
       </div>
-    )
-  }
+    );
+  };
 
   // const renderTabLabel = () => {
   //   return (

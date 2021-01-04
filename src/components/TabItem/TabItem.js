@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './TabItem.sass';
 
-export function TabItem({ tab, currentTab, handleSelectTab }) {
+export function TabItem({
+  tab,
+  currentTab,
+  handleSelectTab,
+  getHighlighterStyle
+}) {
 
   return (
     <li className="tab-item" key={tab.label}>
@@ -15,7 +20,7 @@ export function TabItem({ tab, currentTab, handleSelectTab }) {
       >
         {tab.label}
       </button>
-      <span className="tab-item__highlighter"></span>
+      <span className="tab-item__highlighter" style={getHighlighterStyle()}></span>
     </li>
   )
 }
