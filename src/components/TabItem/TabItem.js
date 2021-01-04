@@ -7,18 +7,20 @@ export function TabItem({
   tab,
   currentTab,
   handleSelectTab,
-  getHighlighterStyle
+  getHighlighterStyle,
+  renderDefaultTabLabel,
+  renderTabLabel,
 }) {
 
   return (
-    <li className="tab-item" key={tab.label}>
+    <li className="tab-item">
       <button className={classNames('tab-item__button', {
           'tab-item__button_active': currentTab.label === tab.label,
         })}
         type="button"
         onClick={() => handleSelectTab(tab)}
       >
-        {tab.label}
+        {renderTabLabel(tab) || renderDefaultTabLabel(tab)}
       </button>
       <span className="tab-item__highlighter" style={getHighlighterStyle()}></span>
     </li>
@@ -26,6 +28,9 @@ export function TabItem({
 }
 
 TabItem.propTypes = {
+  renderTabLabel: PropTypes.func.isRequired,
+  renderDefaultTabLabel: PropTypes.func.isRequired,
+  getHighlighterStyle: PropTypes.func.isRequired,
   tab: PropTypes.shape({
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,

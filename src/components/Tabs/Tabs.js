@@ -1,9 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { TabItem } from '../TabItem';
 import './Tabs.sass';
 
-export function Tabs({ tabsList, currentTab, handleSelectTab }) {
+export function Tabs({
+  tabsList,
+  currentTab,
+  handleSelectTab,
+  renderDefaultTabLabel,
+  renderTabLabel,
+}) {
   const parentElement = useRef(null);
   const [tabItemsElements, setTabItemsElements] = useState(null);
   const [sizes, setSizes] = useState(null);
@@ -11,9 +17,9 @@ export function Tabs({ tabsList, currentTab, handleSelectTab }) {
   const transitionStyle = `left ${transitionTime}ms, right ${transitionTime}ms`;
 
   const getTabItemsElements = () => {
-    const listItems = parentElement.current.querySelectorAll('li');
+    const tabItems = parentElement.current.querySelectorAll('li');
 
-    setTabItemsElements(listItems);
+    setTabItemsElements(tabItems);
   }
 
   const getSizes = () => {
@@ -46,19 +52,13 @@ export function Tabs({ tabsList, currentTab, handleSelectTab }) {
     getSizes();
   }, [tabItemsElements]);
 
-  // // to delete
-  // useEffect(() => {
-  //   getHighlighterStyle();
-  // }, [sizes, currentTab]);
-
-  // props validation
   const getHighlighterStyle = () => {
     if (!sizes) {
       return {left: '0', right: '100%'}
     }
 
     const size = sizes[currentTab.label];
-    console.log(size)
+
     return {
       left: `${size.left}px`,
       right: `${size.right}px`,
@@ -76,6 +76,8 @@ export function Tabs({ tabsList, currentTab, handleSelectTab }) {
             currentTab={currentTab}
             handleSelectTab={handleSelectTab}
             getHighlighterStyle={getHighlighterStyle}
+            renderDefaultTabLabel={renderDefaultTabLabel}
+            renderTabLabel={renderTabLabel}
           />
         ))}
       </ul>
@@ -84,6 +86,8 @@ export function Tabs({ tabsList, currentTab, handleSelectTab }) {
   }
 
 Tabs.propTypes = {
+  renderTabLabel: PropTypes.func.isRequired,
+  renderDefaultTabLabel: PropTypes.func.isRequired,
   tabsList: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

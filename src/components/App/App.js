@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { options } from '../../options/options';
 import { Tabs } from '../Tabs';
 import { CurrentTabValue } from '../CurrentTabValue';
 import './App.sass';
+import { options, DEFAULT_LABELS } from '../../options/options';
 
 export function App() {
   const [currentTab, setCurrentTab] = useState(options[0]);
 
-  const handleSelectTab = (tab) => {
+  const onChange = (tab) => {
     setCurrentTab(tab);
   };
 
@@ -21,25 +21,26 @@ export function App() {
     );
   };
 
-  // const renderTabLabel = () => {
-  //   return (
-  //     <div className="current-tab">
-  //       <p>
-  //         {currentTab.value}
-  //       </p>
-  //     </div>
-  //   )
-  // }
+  const renderTabLabel = (tab) => {
+    if (DEFAULT_LABELS) {
+      return null;
+    }
 
-  // const renderDefaultTabLabel = () => {
-  //   return (
-  //     <div className="current-tab">
-  //       <p>
-  //         {currentTab.value}
-  //       </p>
-  //     </div>
-  //   )
-  // }
+    return (
+      <>
+        <p>Custom label</p>
+        {tab.label}
+      </>
+    )
+  }
+
+  const renderDefaultTabLabel = (tab) => {
+    return (
+      <>
+        {tab.label}
+      </>
+    )
+  }
 
   return (
     <div className="App">
@@ -47,10 +48,12 @@ export function App() {
       <Tabs
         tabsList={options}
         currentTab={currentTab}
-        handleSelectTab={handleSelectTab}
+        handleSelectTab={onChange}
+        renderDefaultTabLabel={renderDefaultTabLabel}
+        renderTabLabel={renderTabLabel}
       />
 
-      <CurrentTabValue defaultRenderTab={renderTabValue} />
+      <CurrentTabValue renderTabValue={renderTabValue} />
     </div>
   );
 }
