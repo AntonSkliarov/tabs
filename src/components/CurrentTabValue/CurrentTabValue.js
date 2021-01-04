@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function CurrentTabValue({ renderTabValue }) {
-  return (
-    <>
-      {renderTabValue()}
-    </>
-  )
-}
+export const CurrentTabValue = ({ renderTabValue }) => (
+  <>
+    {renderTabValue()}
+  </>
+)
 
 CurrentTabValue.propTypes = {
   renderTabValue: PropTypes.func.isRequired,

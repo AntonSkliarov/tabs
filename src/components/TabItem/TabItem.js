@@ -3,29 +3,27 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './TabItem.sass';
 
-export function TabItem({
+export const TabItem = ({
   tab,
   currentTab,
   handleSelectTab,
   getHighlighterStyle,
   renderDefaultTabLabel,
   renderTabLabel,
-}) {
+}) => (
+  <li className="tab-item">
+    <button className={classNames('tab-item__button', {
+        'tab-item__button_active': currentTab.label === tab.label,
+      })}
+      type="button"
+      onClick={() => handleSelectTab(tab)}
+    >
+      {renderTabLabel(tab) || renderDefaultTabLabel(tab)}
+    </button>
 
-  return (
-    <li className="tab-item">
-      <button className={classNames('tab-item__button', {
-          'tab-item__button_active': currentTab.label === tab.label,
-        })}
-        type="button"
-        onClick={() => handleSelectTab(tab)}
-      >
-        {renderTabLabel(tab) || renderDefaultTabLabel(tab)}
-      </button>
-      <span className="tab-item__highlighter" style={getHighlighterStyle()}></span>
-    </li>
-  )
-}
+    <span className="tab-item__highlighter" style={getHighlighterStyle()}></span>
+  </li>
+)
 
 TabItem.propTypes = {
   renderTabLabel: PropTypes.func.isRequired,

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Tabs } from '../Tabs';
 import { CurrentTabValue } from '../CurrentTabValue';
 import './App.sass';
-import { options, DEFAULT_LABELS } from '../../options/options';
+import { DEFAULT_LABELS, options } from '../../options/options';
 
 export function App() {
   const [currentTab, setCurrentTab] = useState(options[0]);
