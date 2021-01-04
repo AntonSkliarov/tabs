@@ -1,26 +1,56 @@
 import React, { useState } from 'react';
-import { options } from '../../api/options'
+import { options } from '../../options/options'
 import { Tabs } from '../Tabs'
 import { CurrentTabValue } from '../CurrentTabValue'
+import './App.sass';
 
 export function App() {
-  const [tabsList] = useState(options);
-  const [currentTab, setCurrentTab] = useState(tabsList[0]);
+  const [currentTab, setCurrentTab] = useState(options[0]);
 
   const handleSelectTab = (tab) => {
     setCurrentTab(tab);
   }
 
+  const renderTabValue = () => {
+    return (
+      <div className="current-tab">
+        <p>
+          {currentTab.value}
+        </p>
+      </div>
+    )
+  }
+
+  // const renderTabLabel = () => {
+  //   return (
+  //     <div className="current-tab">
+  //       <p>
+  //         {currentTab.value}
+  //       </p>
+  //     </div>
+  //   )
+  // }
+
+  // const renderDefaultTabLabel = () => {
+  //   return (
+  //     <div className="current-tab">
+  //       <p>
+  //         {currentTab.value}
+  //       </p>
+  //     </div>
+  //   )
+  // }
+
   return (
     <div className="App">
       <h1>Tabs</h1>
       <Tabs
-        tabsList={tabsList}
+        tabsList={options}
         currentTab={currentTab}
         handleSelectTab={handleSelectTab}
       />
 
-      <CurrentTabValue value={currentTab.value} />
+      <CurrentTabValue defaultRenderTab={renderTabValue} />
     </div>
   );
 }

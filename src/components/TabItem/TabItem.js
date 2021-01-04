@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '../Button';
+import classNames from 'classnames';
+import './TabItem.sass';
 
 export function TabItem({ tab, currentTab, handleSelectTab }) {
+
   return (
-    <li key={tab.label}>
-      <Button
-        tab={tab}
-        currentTab={currentTab}
-        handleSelectTab={handleSelectTab}
-      />
+    <li className="tab-item" key={tab.label}>
+      <button className={classNames('tab-item__button', {
+          'tab-item__button_active': currentTab.label === tab.label,
+        })}
+        type="button"
+        onClick={() => handleSelectTab(tab)}
+      >
+        {tab.label}
+      </button>
+      <span className="tab-item__highlighter"></span>
     </li>
   )
 }

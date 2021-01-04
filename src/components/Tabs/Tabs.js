@@ -4,6 +4,7 @@ import { TabItem } from '../TabItem'
 import './Tabs.sass'
 
 export function Tabs({ tabsList, currentTab, handleSelectTab }) {
+
   return (
     <ul className="tabs">
       {tabsList.map(tab => (
