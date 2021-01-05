@@ -1,49 +1,35 @@
-.tab-item
+@import '../../helpers/_variables'
 
+.tab-item
   &__button
-    // width: 110px
-    padding: 10px
+    padding: 10px 35px
 
     text-transform: uppercase
-    // font-family: inherit
     font-weight: 500
+    font-size: 14px
     letter-spacing: 1px
-    color: -internal-light-dark(black, white)
+    color: $button-text-color
 
-    background-color: #fff
+    background-color: $basic-background-color
     border: none
     outline: none
 
-    transition: background-color 400ms
+    transition: background-color $hover-duration
 
     cursor: pointer
 
     &:hover
-      background-color: rgba(98, 0, 238, 0.05)
+      background-color: $hover-background-color
 
     &_active
-      color: #6200ee
+      color: $main-color
 
-      background-color: rgba(98, 0, 238, 0.1)
+      background-color: $active-background-color
 
   &__highlighter
     position: absolute
-    // max-width: 110px
     top: 100%
     left: 0
     right: 0
-    border-bottom: 2px solid #6200ee
-    // position: absolute
-    // z-index: 10
-    // bottom: 0
-    // height: 2px
-    // background:  #6200ee
-    // max-width: 110px
-    // width: 100%
-    // transform: translateX(0)
-    // display: block
-    // left: 0
-    // transition: transform .23s ease
 
-  // &__button_active ~ &__highlighter
-  //   transform: translateX(100px)
+    border-bottom: 2px solid $main-color

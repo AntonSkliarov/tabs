@@ -13,9 +13,11 @@ export const TabItem = ({
   renderTabLabel,
 }) => (
   <li className="tab-item">
-    <button className={classNames('tab-item__button', {
-      'tab-item__button_active': currentTab.value === tab.value,
-    })}
+
+    <button
+      className={classNames('tab-item__button', {
+        'tab-item__button_active': currentTab.value === tab.value,
+      })}
       type="button"
       onClick={() => handleSelectTab(tab)}
     >

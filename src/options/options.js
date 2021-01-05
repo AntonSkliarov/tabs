@@ -11,6 +11,6 @@ export const options = [
     value: 'birds',
     label: 'Tab Three',
   }
-]
+];
 
 export const DEFAULT_LABELS = true;
