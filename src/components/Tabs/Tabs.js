@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { TabItem } from '../TabItem';
 import './Tabs.sass';
+import { TAB_PROPTYPES_SHAPE } from '../../propTypesShapes';
 
 export function Tabs({
   tabsList,
@@ -20,7 +21,7 @@ export function Tabs({
     const tabItems = parentElement.current.querySelectorAll('li');
 
     setTabItemsElements(tabItems);
-  }
+  };
 
   const getSizes = () => {
     const rootBounds = parentElement.current.getBoundingClientRect();
@@ -33,12 +34,12 @@ export function Tabs({
       const left = bounds.left - rootBounds.left;
       const right = rootBounds.right - bounds.right;
 
-      const key = tabsList[i].label;
+      const key = tabsList[i].value;
       sizes[key] = { left, right };
     });
 
     setSizes(sizes);
-  }
+  };
 
   useEffect(() => {
     getTabItemsElements();
@@ -54,24 +55,27 @@ export function Tabs({
 
   const getHighlighterStyle = () => {
     if (!sizes) {
-      return {left: '0', right: '100%'}
+      return {
+        left: '0',
+        right: '100%',
+      };
     }
 
-    const size = sizes[currentTab.label];
+    const size = sizes[currentTab.value];
 
     return {
       left: `${size.left}px`,
       right: `${size.right}px`,
       transition: transitionStyle,
-    }
-  }
+    };
+  };
 
   return (
     <>
       <ul className="tabs" ref={parentElement}>
         {tabsList.map(tab => (
           <TabItem
-            key={tab.label}
+            key={tab.value}
             tab={tab}
             currentTab={currentTab}
             handleSelectTab={handleSelectTab}
@@ -86,17 +90,11 @@ export function Tabs({
   }
 
 Tabs.propTypes = {
+  tabsList: PropTypes.arrayOf(
+    TAB_PROPTYPES_SHAPE
+  ).isRequired,
+  currentTab: TAB_PROPTYPES_SHAPE,
+  handleSelectTab: PropTypes.func.isRequired,
   renderTabLabel: PropTypes.func.isRequired,
   renderDefaultTabLabel: PropTypes.func.isRequired,
-  tabsList: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
-  currentTab: PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  }).isRequired,
-  handleSelectTab: PropTypes.func.isRequired,
 };

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Tabs } from '../Tabs';
-import { CurrentTabValue } from '../CurrentTabValue';
+import { CurrentTabText } from '../CurrentTabText';
 import './App.sass';
+import './Reset.sass';
 import { DEFAULT_LABELS, options } from '../../options/options';
 
 export function App() {
@@ -11,11 +12,11 @@ export function App() {
     setCurrentTab(tab);
   };
 
-  const renderTabValue = () => {
+  const renderTabText = () => {
     return (
       <div className="current-tab">
         <p>
-          {currentTab.value}
+          {currentTab.label}
         </p>
       </div>
     );
@@ -31,29 +32,28 @@ export function App() {
         <p>Custom label</p>
         {tab.label}
       </>
-    )
-  }
+    );
+  };
 
   const renderDefaultTabLabel = (tab) => {
     return (
       <>
         {tab.label}
       </>
-    )
-  }
+    );
+  };
 
   return (
     <div className="App">
-      <h1>Tabs</h1>
       <Tabs
         tabsList={options}
         currentTab={currentTab}
         handleSelectTab={onChange}
-        renderDefaultTabLabel={renderDefaultTabLabel}
         renderTabLabel={renderTabLabel}
+        renderDefaultTabLabel={renderDefaultTabLabel}
       />
 
-      <CurrentTabValue renderTabValue={renderTabValue} />
+      <CurrentTabText renderTabText={renderTabText} />
     </div>
   );
 }
