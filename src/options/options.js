@@ -1,14 +1,14 @@
 export const options = [
   {
-    value: 'cats',
+    value: 'Images',
     label: 'Tab One',
   },
   {
-    value: 'dogs',
+    value: 'Videos',
     label: 'Tab Two',
   },
   {
-    value: 'birds',
+    value: 'Friends',
     label: 'Tab Three',
   }
 ];

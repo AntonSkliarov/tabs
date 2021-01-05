@@ -1,0 +1,2 @@
+const TRANSITION_TIME = 500;
+export const TRANSITION_STYLE = `left ${TRANSITION_TIME}ms, right ${TRANSITION_TIME}ms`;

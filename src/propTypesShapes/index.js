@@ -1,1 +1,2 @@
-export * from './tabPropTypesShapes';
+export * from './tabPropTypesShape';
+export * from './sizesPropTypesShape';

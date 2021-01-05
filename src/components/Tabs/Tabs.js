@@ -14,8 +14,6 @@ export function Tabs({
   const parentElement = useRef(null);
   const [tabItemsElements, setTabItemsElements] = useState(null);
   const [sizes, setSizes] = useState(null);
-  const transitionTime = 500;
-  const transitionStyle = `left ${transitionTime}ms, right ${transitionTime}ms`;
 
   const getTabItemsElements = () => {
     const tabItems = parentElement.current.querySelectorAll('li');
@@ -53,25 +51,7 @@ export function Tabs({
     getSizes();
   }, [tabItemsElements]);
 
-  const getHighlighterStyle = () => {
-    if (!sizes) {
-      return {
-        left: '0',
-        right: '100%',
-      };
-    }
-
-    const size = sizes[currentTab.value];
-
-    return {
-      left: `${size.left}px`,
-      right: `${size.right}px`,
-      transition: transitionStyle,
-    };
-  };
-
   return (
-    <>
       <ul className="tabs" ref={parentElement}>
         {tabsList.map(tab => (
           <TabItem
@@ -79,15 +59,14 @@ export function Tabs({
             tab={tab}
             currentTab={currentTab}
             handleSelectTab={handleSelectTab}
-            getHighlighterStyle={getHighlighterStyle}
+            sizes={sizes}
             renderDefaultTabLabel={renderDefaultTabLabel}
             renderTabLabel={renderTabLabel}
           />
         ))}
       </ul>
-    </>
   );
-  }
+}
 
 Tabs.propTypes = {
   tabsList: PropTypes.arrayOf(
