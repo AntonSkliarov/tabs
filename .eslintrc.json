@@ -12,5 +12,8 @@
     },
     "rules": {
       "semi": "error"
+    },
+    "env": {
+      "browser": true
     }
 }

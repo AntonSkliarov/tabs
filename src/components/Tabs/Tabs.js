@@ -1,79 +1,59 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { TabItem } from '../TabItem';
+import React, { useState } from 'react';
+import { TabsList } from '../TabsList';
+import { CurrentTabText } from '../CurrentTabText';
 import './Tabs.sass';
-import { TAB_PROPTYPES_SHAPE } from '../../propTypesShapes';
+import './_reset.sass';
+import { DEFAULT_LABELS, options } from '../../options/options';
 
-export function Tabs({
-  tabsList,
-  currentTab,
-  handleSelectTab,
-  renderDefaultTabLabel,
-  renderTabLabel,
-}) {
-  const parentElement = useRef(null);
-  const [tabItemsElements, setTabItemsElements] = useState(null);
-  const [sizes, setSizes] = useState(null);
+export function Tabs() {
+  const [currentTab, setCurrentTab] = useState(options[0]);
 
-  const getTabItemsElements = () => {
-    const tabItems = parentElement.current.querySelectorAll('li');
-
-    setTabItemsElements(tabItems);
+  const onChange = (tab) => {
+    setCurrentTab(tab);
   };
 
-  const getSizes = () => {
-    const rootBounds = parentElement.current.getBoundingClientRect();
-
-    const sizes = {};
-
-    Object.values(tabItemsElements).forEach((item, i) => {
-      const bounds = item.getBoundingClientRect();
-
-      const left = bounds.left - rootBounds.left;
-      const right = rootBounds.right - bounds.right;
-
-      const key = tabsList[i].value;
-      sizes[key] = { left, right };
-    });
-
-    setSizes(sizes);
+  const renderTabText = () => {
+    return (
+      <div className="current-tab">
+        <p className="current-tab__text">
+          {currentTab.label}
+        </p>
+      </div>
+    );
   };
 
-  useEffect(() => {
-    getTabItemsElements();
-  }, []);
-
-  useEffect(() => {
-    if (!tabItemsElements) {
-      return;
+  const renderTabLabel = (tab) => {
+    if (DEFAULT_LABELS) {
+      return null;
     }
 
-    getSizes();
-  }, [tabItemsElements]);
+    return (
+      <>
+        <p>Custom label</p>
+        {tab.label}
+      </>
+    );
+  };
+
+  const renderDefaultTabLabel = (tab) => {
+    return (
+      <>
+        {tab.label}
+      </>
+    );
+  };
 
   return (
-      <ul className="tabs" ref={parentElement}>
-        {tabsList.map(tab => (
-          <TabItem
-            key={tab.value}
-            tab={tab}
-            currentTab={currentTab}
-            handleSelectTab={handleSelectTab}
-            sizes={sizes}
-            renderDefaultTabLabel={renderDefaultTabLabel}
-            renderTabLabel={renderTabLabel}
-          />
-        ))}
-      </ul>
+    <div className="tabs">
+      <TabsList
+        tabsList={options}
+        currentTab={currentTab}
+        handleSelectTab={onChange}
+        renderTabLabel={renderTabLabel}
+        renderDefaultTabLabel={renderDefaultTabLabel}
+      />
+
+      <CurrentTabText renderTabText={renderTabText} />
+    </div>
   );
 }
-
-Tabs.propTypes = {
-  tabsList: PropTypes.arrayOf(
-    TAB_PROPTYPES_SHAPE
-  ).isRequired,
-  currentTab: TAB_PROPTYPES_SHAPE,
-  handleSelectTab: PropTypes.func.isRequired,
-  renderTabLabel: PropTypes.func.isRequired,
-  renderDefaultTabLabel: PropTypes.func.isRequired,
-};
