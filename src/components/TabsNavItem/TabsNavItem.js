@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './TabItem.sass';
+import './TabsNavItem.sass';
 import { TAB_PROPTYPES_SHAPE, SIZES_PROPTYPES_SHAPE } from '../../propTypesShapes';
 import { TRANSITION_STYLE } from '../../helpers/_constants';
 
-export function TabItem({
+export function TabsNavItem({
   tab,
   currentTab,
   handleSelectTab,
@@ -30,10 +30,10 @@ export function TabItem({
   };
 
   return (
-    <li className="tab-item">
+    <li className="tabs-nav-item">
       <button
-        className={classNames('tab-item__button', {
-          'tab-item__button_active': currentTab.value === tab.value,
+        className={classNames('tabs-nav-item__button', {
+          'tabs-nav-item__button_active': currentTab.value === tab.value,
         })}
         type="button"
         onClick={() => handleSelectTab(tab)}
@@ -41,12 +41,12 @@ export function TabItem({
         {render(tab)}
       </button>
 
-      <span className="tab-item__highlighter" style={getHighlighterStyle()}></span>
+      <span className="tabs-nav-item__highlighter" style={getHighlighterStyle()}></span>
     </li>
   );
 }
 
-TabItem.propTypes = {
+TabsNavItem.propTypes = {
   tab: TAB_PROPTYPES_SHAPE,
   currentTab: TAB_PROPTYPES_SHAPE,
   handleSelectTab: PropTypes.func.isRequired,

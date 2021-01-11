@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { TabItem } from '../TabItem';
+import { TabsNavItem } from '../TabsNavItem';
 import './TabsNav.sass';
 import { TAB_PROPTYPES_SHAPE } from '../../propTypesShapes';
 
@@ -53,7 +53,7 @@ export function TabsNav({
   return (
       <ul className="tabs-nav" ref={parentElement}>
         {tabsList.map(tab => (
-          <TabItem
+          <TabsNavItem
             key={tab.value}
             tab={tab}
             currentTab={currentTab}
