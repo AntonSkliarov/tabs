@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { TabsList } from '../TabsList';
 import { CurrentTabText } from '../CurrentTabText';
-import './Tabs.sass';
+import './App.sass';
 import './_reset.sass';
 import { DEFAULT_LABELS, options } from '../../options/options';
 
-export function Tabs() {
+export function App() {
   const [currentTab, setCurrentTab] = useState(options[0]);
 
   const onChange = (tab) => {
@@ -44,7 +44,7 @@ export function Tabs() {
   };
 
   return (
-    <div className="tabs">
+    <>
       <TabsList
         tabsList={options}
         currentTab={currentTab}
@@ -54,6 +54,6 @@ export function Tabs() {
       />
 
       <CurrentTabText renderTabText={renderTabText} />
-    </div>
+    </>
   );
 }
