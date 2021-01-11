@@ -13,4 +13,4 @@ export const options = [
   }
 ];
 
-export const DEFAULT_LABELS = true;
+export const DEFAULT_TABS  = true;

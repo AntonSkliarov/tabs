@@ -8,8 +8,7 @@ export function TabsList({
   tabsList,
   currentTab,
   handleSelectTab,
-  renderDefaultTabLabel,
-  renderTabLabel,
+  render,
 }) {
   const parentElement = useRef(null);
   const [tabItemsElements, setTabItemsElements] = useState(null);
@@ -60,8 +59,7 @@ export function TabsList({
             currentTab={currentTab}
             handleSelectTab={handleSelectTab}
             sizes={sizes}
-            renderDefaultTabLabel={renderDefaultTabLabel}
-            renderTabLabel={renderTabLabel}
+            render={render}
           />
         ))}
       </ul>
@@ -74,6 +72,5 @@ TabsList.propTypes = {
   ).isRequired,
   currentTab: TAB_PROPTYPES_SHAPE,
   handleSelectTab: PropTypes.func.isRequired,
-  renderTabLabel: PropTypes.func.isRequired,
-  renderDefaultTabLabel: PropTypes.func.isRequired,
+  render: PropTypes.func.isRequired,
 };

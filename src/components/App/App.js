@@ -3,7 +3,7 @@ import { TabsList } from '../TabsList';
 import { CurrentTabText } from '../CurrentTabText';
 import './App.sass';
 import './_reset.sass';
-import { DEFAULT_LABELS, options } from '../../options/options';
+import { DEFAULT_TABS , options } from '../../options/options';
 
 export function App() {
   const [currentTab, setCurrentTab] = useState(options[0]);
@@ -22,11 +22,7 @@ export function App() {
     );
   };
 
-  const renderTabLabel = (tab) => {
-    if (DEFAULT_LABELS) {
-      return null;
-    }
-
+  const renderTab = (tab) => {
     return (
       <>
         <p>Custom label</p>
@@ -35,7 +31,7 @@ export function App() {
     );
   };
 
-  const renderDefaultTabLabel = (tab) => {
+  const renderDefaultTab = (tab) => {
     return (
       <>
         {tab.label}
@@ -49,8 +45,7 @@ export function App() {
         tabsList={options}
         currentTab={currentTab}
         handleSelectTab={onChange}
-        renderTabLabel={renderTabLabel}
-        renderDefaultTabLabel={renderDefaultTabLabel}
+        render={DEFAULT_TABS ? renderDefaultTab : renderTab}
       />
 
       <CurrentTabText renderTabText={renderTabText} />

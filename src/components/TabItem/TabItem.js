@@ -10,8 +10,7 @@ export function TabItem({
   currentTab,
   handleSelectTab,
   sizes,
-  renderDefaultTabLabel,
-  renderTabLabel,
+  render,
 }) {
   const getHighlighterStyle = () => {
     if (!sizes) {
@@ -39,7 +38,7 @@ export function TabItem({
         type="button"
         onClick={() => handleSelectTab(tab)}
       >
-        {renderTabLabel(tab) || renderDefaultTabLabel(tab)}
+        {render(tab)}
       </button>
 
       <span className="tab-item__highlighter" style={getHighlighterStyle()}></span>
@@ -51,7 +50,6 @@ TabItem.propTypes = {
   tab: TAB_PROPTYPES_SHAPE,
   currentTab: TAB_PROPTYPES_SHAPE,
   handleSelectTab: PropTypes.func.isRequired,
-  renderTabLabel: PropTypes.func.isRequired,
-  renderDefaultTabLabel: PropTypes.func.isRequired,
+  render: PropTypes.func.isRequired,
   sizes: SIZES_PROPTYPES_SHAPE,
 };
