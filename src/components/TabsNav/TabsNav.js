@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { TabItem } from '../TabItem';
-import './TabsList.sass';
+import './TabsNav.sass';
 import { TAB_PROPTYPES_SHAPE } from '../../propTypesShapes';
 
-export function TabsList({
+export function TabsNav({
   tabsList,
   currentTab,
   handleSelectTab,
@@ -51,7 +51,7 @@ export function TabsList({
   }, [tabItemsElements]);
 
   return (
-      <ul className="tabs-list" ref={parentElement}>
+      <ul className="tabs-nav" ref={parentElement}>
         {tabsList.map(tab => (
           <TabItem
             key={tab.value}
@@ -66,7 +66,7 @@ export function TabsList({
   );
 }
 
-TabsList.propTypes = {
+TabsNav.propTypes = {
   tabsList: PropTypes.arrayOf(
     TAB_PROPTYPES_SHAPE
   ).isRequired,

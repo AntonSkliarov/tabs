@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TabsList } from '../TabsList';
+import { TabsNav } from '../TabsNav';
 import { TabContent } from '../TabContent';
 import './App.sass';
 import './_reset.sass';
@@ -31,7 +31,7 @@ export function App() {
 
   return (
     <>
-      <TabsList
+      <TabsNav
         tabsList={options}
         currentTab={currentTab}
         handleSelectTab={onChange}
