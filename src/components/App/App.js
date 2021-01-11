@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TabsList } from '../TabsList';
-import { CurrentTabText } from '../CurrentTabText';
+import { TabContent } from '../TabContent';
 import './App.sass';
 import './_reset.sass';
 import { DEFAULT_TABS , options } from '../../options/options';
@@ -10,16 +10,6 @@ export function App() {
 
   const onChange = (tab) => {
     setCurrentTab(tab);
-  };
-
-  const renderTabText = () => {
-    return (
-      <div className="current-tab">
-        <p className="current-tab__text">
-          {currentTab.label}
-        </p>
-      </div>
-    );
   };
 
   const renderTab = (tab) => {
@@ -48,7 +38,17 @@ export function App() {
         render={DEFAULT_TABS ? renderDefaultTab : renderTab}
       />
 
-      <CurrentTabText renderTabText={renderTabText} />
+      <TabContent isSelected={currentTab.value === 'Images'}>
+        <p>Some images</p>
+      </TabContent>
+
+      <TabContent isSelected={currentTab.value === 'Videos'}>
+        <p>Some videos</p>
+      </TabContent>
+
+      <TabContent isSelected={currentTab.value === 'Friends'}>
+        <p>Friends list</p>
+      </TabContent>
     </>
   );
 }
