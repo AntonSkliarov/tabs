@@ -1,3 +1,3 @@
 # Tabs
 
-[DEMO](https://antonskliarov.github.io/tabs/)
+For DEMO click [HERE](https://antonskliarov.github.io/tabs/)
