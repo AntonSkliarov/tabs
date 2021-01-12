@@ -1,5 +1,16 @@
+@import '../../helpers/_variables'
+
 .tabs-nav
-  display: flex
   position: relative
 
-  margin-bottom: 20px
+  width: 400px
+
+  &__list
+    display: flex
+  
+  &__highlighter
+    position: absolute
+
+    border-bottom: 2px solid $main-color
+
+    transition: transform $highlighter-duration

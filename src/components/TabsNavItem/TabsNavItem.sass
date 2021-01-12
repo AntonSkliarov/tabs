@@ -1,14 +1,19 @@
 @import '../../helpers/_variables'
 
 .tabs-nav-item
+  width: 100%
+  flex-grow: 1
+
   &__button
-    padding: 10px 35px
-    margin: 0
+    width: 100%
+    flex-grow: 1
+    padding: 15px 0
 
     text-transform: uppercase
+    text-align: center
 
-    font-weight: 500
-    letter-spacing: 1px
+    font-weight: bold
+    list-style-type: none
     color: $button-text-color
 
     background-color: $basic-background-color
@@ -26,11 +31,3 @@
       color: $main-color
 
       background-color: $active-background-color
-
-  &__highlighter
-    position: absolute
-    top: 100%
-    left: 0
-    right: 0
-
-    border-bottom: 2px solid $main-color
