@@ -1,33 +1,29 @@
 @import '../../helpers/_variables'
 
 .tabs-nav-item
-  width: 100%
   flex-grow: 1
+  width: 100%
+  padding: 10px 0
 
-  &__button
-    width: 100%
-    flex-grow: 1
-    padding: 15px 0
+  text-transform: uppercase
+  text-align: center
 
-    text-transform: uppercase
-    text-align: center
+  font-weight: bold
+  list-style-type: none
+  color: $button-text-color
 
-    font-weight: bold
-    list-style-type: none
-    color: $button-text-color
+  background-color: $basic-background-color
+  border: none
+  outline: none
 
-    background-color: $basic-background-color
-    border: none
-    outline: none
+  transition: background-color $hover-duration
 
-    transition: background-color $hover-duration
+  cursor: pointer
 
-    cursor: pointer
+  &:hover
+    background-color: $hover-background-color
 
-    &:hover
-      background-color: $hover-background-color
+  &_active
+    color: $main-color
 
-    &_active
-      color: $main-color
-
-      background-color: $active-background-color
+    background-color: $active-background-color
