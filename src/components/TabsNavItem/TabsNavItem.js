@@ -4,26 +4,24 @@ import classNames from 'classnames';
 import './TabsNavItem.sass';
 import { TAB_PROPTYPES_SHAPE } from '../../propTypesShapes';
 
-export function TabsNavItem({
+export const TabsNavItem = ({
   tab,
   currentTab,
   handleSelectTab,
   render,
-}) {
-  return (
-    <li className="tabs-nav-item">
-      <button
-        className={classNames('tabs-nav-item__button', {
-          'tabs-nav-item__button_active': currentTab.value === tab.value,
-        })}
-        type="button"
-        onClick={() => handleSelectTab(tab)}
-      >
-        {render(tab)}
-      </button>
-    </li>
-  );
-}
+}) => (
+  <li className="tabs-nav-item">
+    <button
+      className={classNames('tabs-nav-item__button', {
+        'tabs-nav-item__button_active': currentTab.value === tab.value,
+      })}
+      type="button"
+      onClick={() => handleSelectTab(tab)}
+    >
+      {render(tab)}
+    </button>
+  </li>
+);
 
 TabsNavItem.propTypes = {
   tab: TAB_PROPTYPES_SHAPE,
