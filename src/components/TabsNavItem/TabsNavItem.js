@@ -40,7 +40,6 @@ export function TabsNavItem({
       >
         {render(tab)}
       </button>
-
       <span className="tabs-nav-item__highlighter" style={getHighlighterStyle()}></span>
     </li>
   );
